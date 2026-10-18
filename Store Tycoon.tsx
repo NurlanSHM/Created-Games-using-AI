@@ -1,4 +1,5 @@
   import React, { useState, useEffect, useRef } from 'react';
+import { isUpgradeAffordable } from './src/gameRules.js';
 import {
   ShoppingBag, TrendingUp, DollarSign, AlertTriangle, ShieldAlert,
   Truck, Users, Briefcase, Zap, Lock, RefreshCw, Award, ChevronRight,
@@ -1010,7 +1011,7 @@ export default function App() {
                         {Object.entries(UPGRADES_LIST).map(([key, data]) => {
                             const owned = gameState.upgrades[key];
                             const cost = Math.floor(data.cost * gameState.upgradeMod);
-                            const affordable = gameState.money >= cost;
+                            const affordable = isUpgradeAffordable(gameState.money, cost);
 
                             return (
                                 <div key={key} className={`flex flex-col p-6 rounded-[2rem] border-2 transition-all shadow-xl relative overflow-hidden ${owned ? 'bg-indigo-950/20 border-indigo-500/30' : 'bg-slate-800 border-slate-700 hover:border-slate-500 group'}`}>
