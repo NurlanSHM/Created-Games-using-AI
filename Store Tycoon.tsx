@@ -1033,6 +1033,7 @@ export default function App() {
                                         </div>
                                     ) : (
                                         <button
+                                            disabled={!affordable}
                                             onClick={() => buyUpgrade(key)}
                                             className={`mt-auto w-full py-3 rounded-2xl font-black text-xs transition-all flex items-center justify-center gap-2 uppercase tracking-widest ${
                                                 affordable 
